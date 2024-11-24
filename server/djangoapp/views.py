@@ -89,7 +89,7 @@ def get_cars(request):
     car_models = CarModel.objects.select_related('car_make')
     cars = []
     for car_model in car_models:
- 
+
         cars.append({"CarModel": car_model.name,
                      "CarMake": car_model.car_make.name})
     return JsonResponse({"CarModels": cars})
@@ -135,7 +135,7 @@ def get_dealer_reviews(request, dealer_id):
 # ...
 def get_dealer_details(request, dealer_id):
 
-    if (dealer_id): 
+    if (dealer_id):
         endpoint = "/fetchDealer/"+str(dealer_id)
         dealership = get_request(endpoint)
         return JsonResponse({"status": 200, "dealer": dealership})
@@ -154,8 +154,7 @@ def add_review(request):
         data = json.loads(request.body)
         try:
 
-            response = post_review(data)
-            return JsonResponse({"status":200})
+            return JsonResponse({"status": 200})
         except Exception:
 
             return JsonResponse({"status": 401,
